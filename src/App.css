@@ -1,9 +1,109 @@
 .App {
   text-align: center;
 }
-
 .cv-container {
-  background-color: lightcyan
+  margin-top: 5vh;
+  padding: 4rem;
+  padding-top: 1rem;
+  background-color: grey;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-
-
+.next-section-container {
+  top: 30%;
+  display: flex;
+  justify-content: space-between;
+}
+.next-section-left {
+  transform: scaleX(-1);
+  height: 80px;
+}
+.next-section-right {
+  height: 80px;
+}
+.next-section-left:hover, .next-section-right:hover{
+  opacity: 0.5;
+  background-color: white;
+  border-radius: 50px;
+  cursor: pointer;
+}
+.final-cv, .sample-cv {
+  border: 3px solid black;
+  background-color: rgb(33, 233, 166);
+  padding: 10px;
+}
+.final-cv:hover, .sample-cv:hover {
+  background-color: white;
+  cursor: pointer;
+}
+.cv-container .title {
+  margin: auto;
+  text-align: center;
+  font-size: 3rem;
+  color: white;
+  margin-bottom: 1rem;
+}
+.cv-container .general, .education, .experience {
+  height: auto;
+  width: 50%;
+  margin: auto;
+  padding: 2rem;
+  padding-top: 0;
+  background-color: white;
+}
+.cv-container h1 {
+  margin: 0;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+.cv-container .general-container, .education-container, .experience-container {
+  padding: 1rem;
+  justify-content:center
+}
+.cv-container .general-container > *, .education-container > *, .experience-container > *{
+  display: grid;
+}
+.cv-container .section-title {
+  text-decoration: underline;
+}
+.cv-container input {
+  height: 2rem;
+  font-size: 1.5rem;
+  min-width: 150px;
+}
+.cv-container .button-container {
+  display: flex;
+  flex-direction: row;
+}
+.cv-container .submit-button {
+  flex-basis: 300px;
+  margin: auto;
+  margin-top: 1rem;
+  height: 2.5rem;
+  line-height: 2.5rem;
+  width: 10vw !important;
+  color: white;
+  font-size: 1.5rem;
+  border-radius: 5px;
+  margin-top: 10px;
+  border: 0;
+}
+.cv-container .submit-button:hover {
+  cursor: pointer;
+}
+.submit-button[value='submit']{
+  background-color: darkblue;
+}
+.submit-button[value='edit']{
+  background-color: goldenrod;
+}
+.submitted-info {
+  font-style: italic;
+  height: 1rem;
+  font-size: 1rem;
+  text-align: center;
+}
+.submitted-info:first-of-type {
+  font-size: 1.5rem;
+  text-align: center;
+}
