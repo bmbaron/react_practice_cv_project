@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/react_practice_cv_project/static/css/main.d33ebac9.css",
+    "main.js": "/react_practice_cv_project/static/js/main.f4cc171d.js",
+    "index.html": "/react_practice_cv_project/index.html",
+    "main.d33ebac9.css.map": "/react_practice_cv_project/static/css/main.d33ebac9.css.map",
+    "main.f4cc171d.js.map": "/react_practice_cv_project/static/js/main.f4cc171d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d33ebac9.css",
+    "static/js/main.f4cc171d.js"
+  ]
+}
