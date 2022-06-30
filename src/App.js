@@ -63,61 +63,6 @@ class App extends Component {
     })
   }
 
-  loadSample = (display) => {
-    alert(display)
-
-    display === true ?
-    this.setState({
-      general: {
-        submitted: !this.state.general.submitted,
-        name: 'Sally Sanderson',
-        email: 'silly-sally@gmail.com', 
-        phone: '319-540-9110',
-        position: 'Head of Marketing',
-      },
-      education: {
-        submitted: !this.state.education.submitted,
-        school: 'The University of Chesterton',
-        major: 'Informatics and System Design',
-        dateStart: '10-02-2007',
-        dateEnd: '05-14-2011',
-      },
-      experience: {
-        submitted: !this.state.experience.submitted,
-        company: 'Big Markets LLC',
-        position: 'Marketing Specialist',
-        tasks: 'developed promotional materials',
-        dateStart: '11-07-2012',
-        dateEnd: '03-06-2015',
-      }
-    })
-    :this.setState({
-      displayFinal: false,
-      general: {
-        submitted: false,
-        name: '',
-        email: '', 
-        phone: '',
-        position: '',
-      },
-      education: {
-        submitted: false,
-        school: '',
-        major: '',
-        dateStart: '',
-        dateEnd: '',
-      },
-      experience: {
-        submitted: false,
-        company: '',
-        position: '',
-        tasks: '',
-        dateStart: '',
-        dateEnd: '',
-      }
-    })
-  }
-
   onSubmit = (newData, page) => {
     this.setState({
       section: this.state.section,
@@ -133,7 +78,7 @@ class App extends Component {
     return(
       <div className='cv-container'>
         <h1 className='title'>CV Maker App</h1>
-        <NavButtons updateSection={this.updateSection} displayFinal={this.displayFinal} loadSample={this.loadSample} />
+        <NavButtons updateSection={this.updateSection} displayFinal={this.displayFinal} />
         {this.state.displayFinal === true ?
           <>
             <GeneralForm general={this.state.general} final={true} submit={this.onSubmit} />

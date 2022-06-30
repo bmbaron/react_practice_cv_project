@@ -1,12 +1,8 @@
-.App {
-  text-align: center;
-}
 .cv-container {
-  margin-top: 5vh;
-  padding: 4rem;
-  padding-top: 1rem;
-  background-color: grey;
+  background-image: radial-gradient(white, darkblue);
+  background-size: cover;
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  padding: 4rem;
 }
 .next-section-container {
   top: 30%;
@@ -26,13 +22,13 @@
   border-radius: 50px;
   cursor: pointer;
 }
-.final-cv, .sample-cv {
-  border: 3px solid black;
-  background-color: rgb(33, 233, 166);
+.final-cv {
+  background-color: rgb(52, 252, 185);
+  color: darkblue;
   padding: 10px;
+  border-radius: 5px;
 }
-.final-cv:hover, .sample-cv:hover {
-  background-color: white;
+.final-cv:hover {
   cursor: pointer;
 }
 .cv-container .title {
@@ -63,9 +59,7 @@
 .cv-container .general-container > *, .education-container > *, .experience-container > *{
   display: grid;
 }
-.cv-container .section-title {
-  text-decoration: underline;
-}
+
 .cv-container input {
   height: 2rem;
   font-size: 1.5rem;
