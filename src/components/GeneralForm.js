@@ -5,10 +5,10 @@ class GeneralForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
-        name: this.props.general.name,
-        email: this.props.general.email, 
-        phone: this.props.general.phone,
-        position: this.props.general.position,
+        name: this.props.general.data.name,
+        email: this.props.general.data.email, 
+        phone: this.props.general.data.phone,
+        'current position': this.props.general.data['current position'],
 		}
 	}
 
@@ -23,24 +23,25 @@ class GeneralForm extends Component {
 		console.log(this.state.name)
 		event.preventDefault()
 		this.props.submit({
-			submitted: !this.props.general.submitted,
+			submitted: !this.props.general.data.submitted,
 			name: this.state.name,
 			email: this.state.email, 
 			phone: this.state.phone,
-			position: this.state.position,
+			'current position': this.state['current position'],
 		}, event.target.className)
 	}
 
 	render() {
 		let generalForm;
-		if(!this.props.general.submitted) {
-			generalForm = Object.keys(this.props.general).map((keyName, index) => {
+		if(!this.props.general.data.submitted) {
+			generalForm = Object.keys(this.props.general.data).map((keyName, index) => {
 				return (
 					index > 0 &&
-					<div className={`${keyName}-container`}>
-						<label htmlFor={keyName}>Your {keyName}: </label>
+					<div className={`${keyName}-container`} key={index}>
+						<label htmlFor={keyName} key={index+"label"}>Your {keyName}: </label>
 						<input 
 							className='input-field'
+							key={index+"input"}
 							id={keyName}
 							onChange={this.updateData} 
 							value={this.state[keyName]}
@@ -50,14 +51,14 @@ class GeneralForm extends Component {
 			})
 		}
 		else {
-			generalForm = Object.keys(this.props.general).map((keyName, index) => {
+			generalForm = Object.keys(this.props.general.data).map((keyName, index) => {
 				return (
 					index > 0 && 
-						<h3 className='submitted-info'>{this.props.general[keyName]} </h3>
+						<h3 className='submitted-info' key={index+"submitted"}>{this.props.general.data[keyName]} </h3>
 				)
 			})
 		}
-		const buttonText = this.props.general.submitted ? "edit" : "submit"
+		const buttonText = this.props.general.data.submitted ? "edit" : "submit"
 
 		return(
 			<form className='general' onSubmit={this.submitData}>
@@ -66,8 +67,8 @@ class GeneralForm extends Component {
 					{generalForm}				
 				</div>
 				{!this.props.final &&
-					<div className='button-container'>
-						<button className='submit-button' formAction='submit' value={buttonText}>{buttonText}</button>
+					<div className='button-container' key={"buttonContainer"}>
+						<button className='submit-button' formAction='submit' value={buttonText} key={"button"}>{buttonText}</button>
 					</div>		
 				}
 			</form>
