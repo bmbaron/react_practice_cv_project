@@ -7,34 +7,41 @@ import NavButtons from './components/NavButtons'
 
 function App() {
 
-  const [section, setSection] = useState(3)
+  const [section, setSection] = useState(1)
   const [final, setFinal] = useState(false)
+
   const [general, setGeneral] = useState({ 
-    data: {
       submitted: false,
       name: '',
       email: '', 
       phone: '',
-      'current position': ''} 
+      'current position': ''
   })
   const [education, setEducation] = useState({ 
-    data: {
         submitted: false,
         school: '',
         major: '',
         dateStart: '',
-        dateEnd: ''}
+        dateEnd: ''
   })
-  const [experience, setExperience] = useState({ 
-    data: [{
+  const [experience, setExperience] = useState( 
+      [{
         submitted: false,
         company: '',
         position: '',
         tasks: '',
-        dateStart: '',
-        dateEnd: '',
+        dateStart2: '',
+        dateEnd2: '',
+      },
+      {
+        submitted: false,
+        company: '',
+        position: '',
+        tasks: '',
+        dateStart2: '',
+        dateEnd2: '',
       }]
-  })
+  )
 
   function updateSection (direction) {
     let newSection = direction === 'down' ?  section - 1 :  section + 1
@@ -48,42 +55,52 @@ function App() {
   }
 
   function displayFinal (display) {
-    setGeneral(prevState => ({
-      data: {...prevState.data, submitted: display}}))
+    setGeneral(prevState => ({...prevState, submitted: display}))
 
-    setEducation(prevState => ({
-      data: {...prevState.data, submitted: display}}))
+    setEducation(prevState => ({...prevState, submitted: display}))
 
-    setExperience(prevState => ({
-      data: {...prevState.data, submitted: display}}))
-      
+    setExperience(prevState => ({...prevState, submitted: display}))
+    
     setFinal(!final)
   }
 
-  function onSubmit () {
+  function onSubmit (newData, page) {
+    page === "general" &&
+      setGeneral({...newData})
 
+    page === "education" &&
+      setEducation({...newData})
+
+    page ==="experience" &&
+      setExperience({...newData})
   }
 
-  function onSubmitExperience () {
-
-  }
+  // function onSubmitExperience (newData, indexToUpdate) {
+  //   setExperience(prevState => ({
+  //     data: prevState.data.map((el, index) => {
+  //       return (
+  //         index === indexToUpdate ? newData : el
+  //       )
+  //     })
+  //   }))
+  // }
 
 
   return (
         <div className='cv-container'>
         <h1 className='title'>CV Maker App</h1>
         <NavButtons updateSection={updateSection} displayFinal={displayFinal} />
-        {displayFinal === true ?
+        {final === true ?
           <>
             <GeneralForm general={general} final={true} submit={onSubmit} />
             <EducationForm education={education} final={true} submit={onSubmit} />
-            <ExperienceForm experience={experience} final={true} submit={onSubmitExperience} />
+            <ExperienceForm experience={experience} final={true} submit={onSubmit} />
           </>
           :
           <>
           {section === 1 && <GeneralForm general={general} submit={onSubmit} /> }
           {section === 2 && <EducationForm education={education} submit={onSubmit} /> }
-          {section === 3 && <ExperienceForm experience={experience} submit={onSubmitExperience} /> } 
+          {section === 3 && <ExperienceForm experience={experience} submit={onSubmit} /> } 
           </>
         }
       </div>
