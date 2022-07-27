@@ -9,7 +9,7 @@ function GeneralForm (props) {
 				submitted: props.general.submitted,
 				name: props.general.name,
 				email: props.general.email, 
-				phone: props.general.phone,
+				'phone number': props.general['phone number'],
 				'current position': props.general['current position']
 		})
 	}, [props.general])
@@ -31,11 +31,17 @@ function GeneralForm (props) {
 		const keys = Object.keys(general)
 		if (!general.submitted){
 			form = keys.map((name, index) => {
+				let type 
+				if (name === 'email') type = 'email'
+				else if (name === 'phone') type = 'tel'
+				else type = 'text'
+
 				return index > 0 && (
 					<div key={`${name}Container`} className={`${name}-container`}>
 						<label key={`${name}Label`}htmlFor={name}>Your {name}: </label>
 						<input 
 							key={name}
+							type={type}
 							className='input-field'
 							onChange={updateData} 
 							name={name}

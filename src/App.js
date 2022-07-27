@@ -7,14 +7,14 @@ import NavButtons from './components/NavButtons'
 
 function App() {
 
-  const [section, setSection] = useState(3)
+  const [section, setSection] = useState(1)
   const [final, setFinal] = useState(false)
 
   const [general, setGeneral] = useState({ 
       submitted: false,
       name: '',
       email: '', 
-      phone: '',
+      'phone number': '',
       'current position': ''
   })
   const [education, setEducation] = useState({ 
@@ -49,7 +49,11 @@ function App() {
   function displayFinal (display) {
     setGeneral(prevState => ({...prevState, submitted: display}))
     setEducation(prevState => ({...prevState, submitted: display}))
-    setExperience(prevState => ({...prevState, submitted: display}))
+    setExperience(prevState => (
+      prevState.map(el => {
+        return {...el, submitted: display}
+      }))
+    )
     setFinal(!final)
   }
 

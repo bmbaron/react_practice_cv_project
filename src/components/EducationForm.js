@@ -9,8 +9,8 @@ function EducationForm (props) {
 				submitted: props.education.submitted,
 				school: props.education.school,
 				major: props.education.major, 
-				'start date': props.education.dateStart,
-				'end date': props.education.dateEnd
+				'start date': props.education['start date'],
+				'end date': props.education['end date']
 		})
 	}, [props.education])
 
