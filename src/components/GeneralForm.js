@@ -2,13 +2,7 @@ import '../App.css';
 import { useState, useEffect } from 'react'
 
 function GeneralForm (props) {
-  const [general, setGeneral] = useState({
-			submitted: '',
-      name: '',
-      email: '', 
-      phone: '',
-      'current position': ''
-  })
+  const [general, setGeneral] = useState({})
 
 	useEffect(()=> {
 		setGeneral({

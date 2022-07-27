@@ -2,21 +2,15 @@ import '../App.css';
 import { useState, useEffect } from 'react'
 
 function EducationForm (props) {
-  const [education, setEducation] = useState({ 
-		submitted: false,
-		school: '',
-		major: '',
-		dateStart: '',
-		dateEnd: ''
-})
+  const [education, setEducation] = useState({})
 
 	useEffect(()=> {
 		setEducation({
 				submitted: props.education.submitted,
 				school: props.education.school,
 				major: props.education.major, 
-				dateStart: props.education.dateStart,
-				dateEnd: props.education.dateEnd
+				'start date': props.education.dateStart,
+				'end date': props.education.dateEnd
 		})
 	}, [props.education])
 
@@ -39,7 +33,7 @@ function EducationForm (props) {
 			form = keys.map((name, index) => {
 				return index > 0 && (
 					<div key={`${name}Container2`} className={`${name}-container2`}>
-						<label key={`${name}Label2`}htmlFor={name}>Your {name}: </label>
+						<label key={`${name}Label2`}htmlFor={name}>{name}: </label>
 						<input 
 							key={name}
 							className='input-field'

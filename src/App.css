@@ -1,5 +1,8 @@
-.cv-container {
+body {
   background-image: radial-gradient(white, darkblue);
+}
+
+.cv-container {
   background-size: cover;
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   padding: 4rem;
@@ -75,9 +78,10 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin-bottom: 3rem;
 }
 
-.cv-container .button-container .button {
+.cv-container .button {
   flex-basis: 100px;
   margin: auto;
   margin-top: 1rem;
@@ -93,7 +97,7 @@
   color: white;
 }
 
-.button-container .add-experience-button {
+.experience-container .add-button {
   color: darkblue;
   background-color: rgb(8, 214, 176);
 }
@@ -103,8 +107,9 @@
   background-color: brown;
 }
 
-.cv-container .button-container .submit-button:hover, .add-experience-button:hover, .delete-button:hover {
+.cv-container .submit-button:hover, .add-button:hover, .delete-button:hover {
   cursor: pointer;
+  transform: scale(1.05);
 }
 .button-container .submit-button[value='submit']{
   background-color: darkblue;
