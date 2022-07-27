@@ -31,11 +31,15 @@ function EducationForm (props) {
 		const keys = Object.keys(education)
 		if (!education.submitted){
 			form = keys.map((name, index) => {
+				let type 
+				if (name === 'start date' || name === 'end date') type = 'date'
+				else type = 'text'
 				return index > 0 && (
 					<div key={`${name}Container2`} className={`${name}-container2`}>
 						<label key={`${name}Label2`}htmlFor={name}>{name}: </label>
 						<input 
 							key={name}
+							type={type}
 							className='input-field'
 							onChange={updateData} 
 							name={name}

@@ -28,12 +28,15 @@ function ExperienceForm (props) {
 			const keys = Object.keys(experience[arrIndex])
 			if (!experience[arrIndex].submitted){
 				return keys.map((name, index) => {
-					console.log(arrIndex, experience.length)
+					let type 
+					if (name === 'start date' || name === 'end date') type = 'date'
+					else type = 'text'
 					return index > 0 && (
 						<div key={`${name}Container`} className={`${name}-container`}>
 							<label key={`${name}Label`}htmlFor={name}>{name}: </label>
 							<input 
 								key={name}
+								type={type}
 								className='input-field'
 								onChange={(event)=>updateData(event,arrIndex)} 
 								name={name}

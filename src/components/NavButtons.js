@@ -21,9 +21,13 @@ class NavButtons extends Component {
 		const displayFinalText = this.state.show ? 'Return to editor' : 'See full CV'
 		return(
 			<div className='next-section-container'>
-				<img className='next-section-left' alt='arrow to continue to next section' src={arrowPic} onClick={() => this.props.updateSection('down')}></img>
+				{!this.state.show &&
+					<img className='next-section-left' alt='arrow to continue to next section' src={arrowPic} onClick={() => this.props.updateSection('down')}></img>
+				}
 				<h2 className='final-cv' onClick={this.displayFinal}>{displayFinalText}</h2>
-				<img className='next-section-right' alt='arrow to continue to next section' src={arrowPic} onClick={() => this.props.updateSection('up')}></img>
+				{!this.state.show &&
+					<img className='next-section-right' alt='arrow to continue to next section' src={arrowPic} onClick={() => this.props.updateSection('up')}></img>
+				}
 			</div>
 		)
   }
