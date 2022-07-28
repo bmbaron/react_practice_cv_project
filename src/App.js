@@ -39,24 +39,24 @@ function preloadData (load) {
   if (load) {
     setGeneral({ 
       submitted: true,
-      name: 'Ben Baron',
-      email: 'benjamin.m.baron@gmail.com', 
-      'phone number': '0192345332',
-      'current position': 'web developer'
+      name: 'Slim Shady',
+      email: 'marshallmathers@gmail.com', 
+      'phone number': '012345678',
+      'current position': 'rapper'
     })
     setEducation({ 
           submitted: true,
-          school: 'The University of Iowa',
-          major: 'biomedical engineering',
+          school: 'The School of Hard Knocks',
+          major: 'English Literature',
           'start date': '10-2-2012',
           'end date': '12-04-2017'
     })
     setExperience(
         [{
           submitted: true,
-          company: 'Vida Diagnostics',
-          position: 'Quality Engineer',
-          tasks: 'analyzing 3d pulmonary data',
+          company: 'Shiny\'s Shoe Repair',
+          position: 'Footwear Technician',
+          tasks: 'responsible for repairing a variety of footwear',
           'start date': '2-07-2017',
           'end date': '05-29-2018'
         }]
