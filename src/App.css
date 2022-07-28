@@ -1,13 +1,15 @@
 body {
   background-image: radial-gradient(white, darkblue);
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .cv-container {
   background-size: cover;
   background: none;
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   padding: 1rem;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+
 .next-section-container {
   top: 30%;
   display: flex;
@@ -17,6 +19,7 @@ body {
   width: 50%;
   margin: auto;
 }
+
 .next-section-left {
   transform: scaleX(-1);
   height: 50px;
@@ -25,6 +28,7 @@ body {
   padding: 10px;
   background-color: white;
 }
+
 .next-section-right {
   height: 50px;
   opacity: 0.5;
@@ -32,21 +36,38 @@ body {
   padding: 10px;
   background-color: white;
 }
+
 .next-section-left:hover, .next-section-right:hover{
   opacity: 0.8;
   cursor: pointer;
 }
-.final-cv {
+
+.nav-button-container {
   margin: auto;
-  margin-bottom: 1rem;
-  background-color: rgb(52, 252, 185);
-  color: darkblue;
-  padding: 10px;
-  border-radius: 5px;
+  width: 80%;
+  display: flex;
 }
+
+.nav-button-container .final-cv, .preload-cv {
+  background-color: rgb(52, 252, 185);
+  margin: auto;
+  height: 2.5rem;
+  width: 120px;
+  line-height: 2.5rem;
+  font-size: 1.5rem;
+  border-radius: 5px;
+  border: none;
+}
+
+.nav-button-container .preload-cv {
+  background-color: rgb(252, 182, 52);
+  color: black;
+}
+
 .final-cv:hover {
   cursor: pointer;
 }
+
 .cv-container .title {
   margin: auto;
   text-align: center;
@@ -54,6 +75,7 @@ body {
   color: white;
   margin-bottom: 1rem;
 }
+
 .cv-container .general, .education, .experience {
   position: relative;
   height: auto;
@@ -63,6 +85,8 @@ body {
   padding: 1rem;
   padding-top: 0;
   background-color: white;
+  border: 2px solid rgb(12, 12, 52);
+  border-radius: 5px;
 
   opacity: 1;
 	animation-name: fadeInOpacity;
@@ -85,7 +109,7 @@ body {
 }
 
 .cv-container h1 {
-  margin: 0;
+  margin: auto;
   margin-top: 1rem;
   margin-bottom: 2rem;
   text-align: center;
@@ -108,10 +132,6 @@ body {
   font-size: 1rem;
 }
 
-.cv-container input[name="email"] {
-  font-size: 0.8rem;
-}
-
 .cv-container input[name="email"]::placeholder {
   font-size: 1rem;
 }
@@ -126,22 +146,22 @@ body {
 
 .cv-container .button {
   margin: auto;
-  margin-top: 1rem;
   height: 2.5rem;
+  width: 120px;
   line-height: 2.5rem;
   font-size: 1.5rem;
   border-radius: 5px;
-  margin-top: 10px;
-  border: 0;
+  margin-top: 0;
+  border: none;
 }
 
 .cv-container .button-container .submit-button {
-  color: white;
+  color: black;
 }
 
 .experience-container .add-button {
-  color: darkblue;
-  background-color: rgb(8, 214, 176);
+  color: black;
+  background-color: rgb(52, 252, 185);
 }
 
 .button-container .delete-button {
@@ -155,11 +175,19 @@ body {
 }
 
 .button-container .submit-button[value='submit']{
-  background-color: darkblue;
+  background-color: rgb(61, 98, 184);
 }
 
 .button-container .submit-button[value='edit']{
   background-color: goldenrod;
+}
+
+.cv-container .experience-buttons {
+  margin: auto;
+  width: 90%;
+  padding: 1rem;
+  border-bottom: 1px solid rgb(118, 118, 118);
+  margin-bottom: 2rem;
 }
 
 .submitted-info {
@@ -172,6 +200,10 @@ body {
 .submitted-info:first-of-type {
   font-size: 1.5rem;
   text-align: center;
+}
+
+.submitted-experience[name="company"] {
+  font-size: 1.5rem !important;
 }
 
 @media screen and (max-width: 800px) {
@@ -203,18 +235,10 @@ body {
   }
   .cv-container .button-container {
     margin: auto;
-    margin-bottom: 0rem;
+    margin-bottom: 2rem;
     width: 90%;
   }
-  .cv-container .experience-buttons {
-    padding: 1rem;
-    border-bottom: 1px solid black;
-    margin-bottom: 2rem;
-  }
   .cv-container .button {
-    height: 3rem;
-    line-height: 3rem;
-    font-size: 2rem;
     margin-top: 20px;
   }
   .experience-container .add-button {
@@ -231,4 +255,10 @@ body {
     font-size: 1.5rem;
     text-align: center;
   }
+}
+
+* {
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0) !important; 
+  -webkit-focus-ring-color: rgba(255, 255, 255, 0) !important; 
+  outline: none !important;
 }

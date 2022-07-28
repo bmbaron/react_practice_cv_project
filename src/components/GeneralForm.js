@@ -63,7 +63,7 @@ function GeneralForm (props) {
 	return(
 		<form className='general' onSubmit={submitData}>
 			<div className='general-container'>
-				<h1 className='section-title'>General Information (1/3)</h1>
+				<h1 className='section-title'>{!props.final ? 'General Information (1/3)' : 'General Information'}</h1>
 				{general && getGeneralForm()}				
 			</div>
 			{!props.final &&	

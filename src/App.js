@@ -35,6 +35,61 @@ function App() {
       }]
   )
 
+function preloadData (load) {
+  if (load) {
+    setGeneral({ 
+      submitted: true,
+      name: 'Ben Baron',
+      email: 'benjamin.m.baron@gmail.com', 
+      'phone number': '0192345332',
+      'current position': 'web developer'
+    })
+    setEducation({ 
+          submitted: true,
+          school: 'The University of Iowa',
+          major: 'biomedical engineering',
+          'start date': '10-2-2012',
+          'end date': '12-04-2017'
+    })
+    setExperience(
+        [{
+          submitted: true,
+          company: 'Vida Diagnostics',
+          position: 'Quality Engineer',
+          tasks: 'analyzing 3d pulmonary data',
+          'start date': '2-07-2017',
+          'end date': '05-29-2018'
+        }]
+    )
+  }
+  else {
+    setGeneral({ 
+      submitted: true,
+      name: '',
+      email: '', 
+      'phone number': '',
+      'current position': ''
+    })
+    setEducation({ 
+          submitted: true,
+          school: '',
+          major: '',
+          'start date': '',
+          'end date': ''
+    })
+    setExperience( 
+        [{
+          submitted: true,
+          company: '',
+          position: '',
+          tasks: '',
+          'start date': '',
+          'end date': ''
+        }]
+    )
+  }
+}
+
   function updateSection (direction) {
     let newSection = direction === 'down' ?  section - 1 :  section + 1
     if (newSection === 0) {
@@ -112,7 +167,7 @@ function App() {
   return (
         <div className='cv-container'>
         <h1 className='title'>CV Maker App</h1>
-        <NavButtons updateSection={updateSection} displayFinal={displayFinal} />
+        <NavButtons updateSection={updateSection} displayFinal={displayFinal} preload={preloadData} />
         {final === true ?
           <>
             <GeneralForm general={general} final={true} submit={onSubmit} />

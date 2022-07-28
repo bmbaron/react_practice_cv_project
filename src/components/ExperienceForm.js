@@ -1,5 +1,5 @@
 import '../App.css';
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 
 
 function ExperienceForm (props) {
@@ -55,10 +55,10 @@ function ExperienceForm (props) {
 							/>
 							{index === 5 && !props.final &&	
 								<div className='button-container experience-buttons' key="buttonContainer">
-										<button className='submit-button button' key={`${name + arrIndex}submitButton`} type='button' onClick={(event)=>submitData(event, arrIndex)} name='experience' value={experience[arrIndex].submitted ? "edit" : "submit"}>{experience[arrIndex].submitted ? "edit" : "submit"}</button>
 										{arrIndex !== 0 &&
 											<button className='delete-button button' key={`${name + arrIndex}deleteButton`} type='button' onClick={()=>props.remove(arrIndex)} value={index}>delete</button>
 										}
+										<button className='submit-button button' key={`${name + arrIndex}submitButton`} type='button' onClick={(event)=>submitData(event, arrIndex)} name='experience' value={experience[arrIndex].submitted ? "edit" : "submit"}>{experience[arrIndex].submitted ? "edit" : "submit"}</button>
 								</div>
 							}	
 						</div>
@@ -68,13 +68,14 @@ function ExperienceForm (props) {
 			else {
 				return keys.map((keyName, index) => {
 					return index > 0 &&
-						<div key={`${keyName + arrIndex}containerDiv`}>
-							<h3 className='submitted-info' key={`${keyName + arrIndex}submitted`}>{experience[arrIndex][keyName]} </h3>
+						<React.Fragment key={`${keyName + arrIndex}containerDiv`}>
+							<h3 className='submitted-info submitted-experience' name={keyName} key={`${keyName + arrIndex}submitted`}>{experience[arrIndex][keyName]} </h3>
 							{index === 5 && !props.final &&	
 								<div className='button-container experience-buttons' key={`${keyName + arrIndex}buttons`}>
 										<button className='submit-button button' key={`${keyName + arrIndex}submitButton2`} type='button' onClick={(event)=>submitData(event, arrIndex)} value={experience[arrIndex].submitted ? "edit" : "submit"}>{experience[arrIndex].submitted ? "edit" : "submit"}</button>
-								</div>}
-						</div>
+								</div>
+							}
+						</React.Fragment>
 				})
 			}
 		})
@@ -84,7 +85,7 @@ function ExperienceForm (props) {
 	return(
 		<form className='experience'>
 			<div className='experience-container'>
-				<h1 className='section-title'>Experience (3/3)</h1>
+				<h1 className='section-title'>{!props.final ? 'Experience (3/3)' : 'Experience'}</h1>
 				{experience && getExperienceForm()}
 				{!props.final && 
 					<button className='add-button button' key="addButton" type='button' onClick={props.add} value="hello">add</button>

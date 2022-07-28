@@ -72,7 +72,7 @@ function EducationForm (props) {
 	return(
 		<form className='education' onSubmit={submitData}>
 			<div className='education-container'>
-				<h1 className='section-title'>Education (2/3)</h1>
+				<h1 className='section-title'>{!props.final ? 'Education (2/3)' : 'Education'}</h1>
 				{education && getEducationForm()}				
 			</div>
 			{!props.final &&	
