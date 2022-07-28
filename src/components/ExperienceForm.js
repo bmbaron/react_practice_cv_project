@@ -28,22 +28,33 @@ function ExperienceForm (props) {
 			const keys = Object.keys(experience[arrIndex])
 			if (!experience[arrIndex].submitted){
 				return keys.map((name, index) => {
-					let type 
-					if (name === 'start date' || name === 'end date') type = 'date'
-					else type = 'text'
+					let isDate = false
+					if (name === 'start date' || name === 'end date') isDate = true
 					return index > 0 && (
 						<div key={`${name}Container`} className={`${name}-container`}>
-							<label key={`${name}Label`}htmlFor={name}>{name}: </label>
 							<input 
 								key={name}
-								type={type}
+								type="text"
 								className='input-field'
+								placeholder={`${name}`}
+								onFocus={(e)=> {
+									if(isDate) {
+										e.currentTarget.type = "date";
+										e.currentTarget.focus();
+									}
+								}}							
+								onBlur={(e)=> {
+										if(isDate) {
+											e.currentTarget.type = "text";
+											e.currentTarget.blur();
+										}
+								}}											
 								onChange={(event)=>updateData(event,arrIndex)} 
 								name={name}
 								value={experience[arrIndex][name]}
 							/>
 							{index === 5 && !props.final &&	
-								<div className='button-container' key="buttonContainer">
+								<div className='button-container experience-buttons' key="buttonContainer">
 										<button className='submit-button button' key={`${name + arrIndex}submitButton`} type='button' onClick={(event)=>submitData(event, arrIndex)} name='experience' value={experience[arrIndex].submitted ? "edit" : "submit"}>{experience[arrIndex].submitted ? "edit" : "submit"}</button>
 										{arrIndex !== 0 &&
 											<button className='delete-button button' key={`${name + arrIndex}deleteButton`} type='button' onClick={()=>props.remove(arrIndex)} value={index}>delete</button>
@@ -60,7 +71,7 @@ function ExperienceForm (props) {
 						<div key={`${keyName + arrIndex}containerDiv`}>
 							<h3 className='submitted-info' key={`${keyName + arrIndex}submitted`}>{experience[arrIndex][keyName]} </h3>
 							{index === 5 && !props.final &&	
-								<div className='button-container' key={`${keyName + arrIndex}buttons`}>
+								<div className='button-container experience-buttons' key={`${keyName + arrIndex}buttons`}>
 										<button className='submit-button button' key={`${keyName + arrIndex}submitButton2`} type='button' onClick={(event)=>submitData(event, arrIndex)} value={experience[arrIndex].submitted ? "edit" : "submit"}>{experience[arrIndex].submitted ? "edit" : "submit"}</button>
 								</div>}
 						</div>
@@ -73,7 +84,7 @@ function ExperienceForm (props) {
 	return(
 		<form className='experience'>
 			<div className='experience-container'>
-				<h1 className='section-title'>Experience</h1>
+				<h1 className='section-title'>Experience (3/3)</h1>
 				{experience && getExperienceForm()}
 				{!props.final && 
 					<button className='add-button button' key="addButton" type='button' onClick={props.add} value="hello">add</button>

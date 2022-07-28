@@ -31,16 +31,27 @@ function EducationForm (props) {
 		const keys = Object.keys(education)
 		if (!education.submitted){
 			form = keys.map((name, index) => {
-				let type 
-				if (name === 'start date' || name === 'end date') type = 'date'
-				else type = 'text'
+				let isDate = false
+				if (name === 'start date' || name === 'end date') isDate = true
 				return index > 0 && (
 					<div key={`${name}Container2`} className={`${name}-container2`}>
-						<label key={`${name}Label2`}htmlFor={name}>{name}: </label>
 						<input 
 							key={name}
-							type={type}
 							className='input-field'
+							type="text"
+							placeholder={`${name}`}
+							onFocus={(e)=> {
+									if(isDate) {
+										e.currentTarget.type = "date";
+										e.currentTarget.focus();
+									}
+							}}							
+							onBlur={(e)=> {
+									if(isDate) {
+										e.currentTarget.type = "text";
+										e.currentTarget.blur();
+									}
+							}}				
 							onChange={updateData} 
 							name={name}
 							value={education[name]}
@@ -61,7 +72,7 @@ function EducationForm (props) {
 	return(
 		<form className='education' onSubmit={submitData}>
 			<div className='education-container'>
-				<h1 className='section-title'>Education</h1>
+				<h1 className='section-title'>Education (2/3)</h1>
 				{education && getEducationForm()}				
 			</div>
 			{!props.final &&	

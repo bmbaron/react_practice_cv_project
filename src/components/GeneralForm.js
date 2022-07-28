@@ -37,11 +37,11 @@ function GeneralForm (props) {
 				else type = 'text'
 
 				return index > 0 && (
-					<div key={`${name}Container`} className={`${name}-container`}>
-						<label key={`${name}Label`}htmlFor={name}>Your {name}: </label>
+					<div key={`${name}Container`} className={`${name}-container input-container`}>
 						<input 
 							key={name}
 							type={type}
+							placeholder={`${name}`}
 							className='input-field'
 							onChange={updateData} 
 							name={name}
@@ -63,7 +63,7 @@ function GeneralForm (props) {
 	return(
 		<form className='general' onSubmit={submitData}>
 			<div className='general-container'>
-				<h1 className='section-title'>General Information</h1>
+				<h1 className='section-title'>General Information (1/3)</h1>
 				{general && getGeneralForm()}				
 			</div>
 			{!props.final &&	
